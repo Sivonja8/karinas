@@ -73,7 +73,7 @@ sudo mkdir /root/.ruxcrypto
 
 
 sudo touch /root/.ruxcrypto/ruxcrypto.conf
-
+echo '
 rpcuser=rpc_ruxcrypto
 rpcpassword=kuw05sqio7bcm8z96o7redv17xws1lw6xpd1qf33
 rpcallowip=127.0.0.1
