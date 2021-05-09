@@ -91,8 +91,16 @@ masternodeprivkey='$key'
 mkdir ruxcrypto
 cd ruxcrypto
 wget https://rxc.crypto.ba/wallets/rxclinux.zip
-unzip rxc*
-sudo mv ruxcr* /usr/bin
+unzip rxclinux.zip
+# Give permissions
+chmod +x ruxcryptod
+chmod +x ruxcrypto-cli
+chmod +x ruxcrypto-tx
+
+# Move binaries do lib folder
+sudo mv ruxcrypto-cli /usr/bin/ruxcrypto-cli
+sudo mv ruxcrypto-tx /usr/bin/ruxcrypto-tx
+sudo mv ruxcryptod /usr/bin/ruxcryptod
 ruxcryptod -daemon
 sleep 5
 
@@ -102,14 +110,22 @@ ruxcrypto-cli addnode 46.101.165.137 add
 ruxcrypto-cli addnode 206.189.135.20 add
 
 sleep 2
+
+
+# 
 echo && echo "Instaliranje Sentinel..."
 sleep 3
-
-sudo apt-get -y update
-sudo apt-get -y install python-virtualenv
-git clone https://git.crypto.ba/rux/SentinelRXC.git && cd SentinelRXC
-virtualenv ./venv
-./venv/bin/pip install -r requirements.txt
+cd
+sudo apt-get -y install python3-pip
+sudo pip3 install virtualenv
+sudo apt-get install screen
+# crypto.ba sentinel made by Rux/Toni.Dev
+sudo git clone https://git.crypto.ba/rux/SentinelRXC /root/sentinel-rxc
+cd /root/sentinel-rxc
+mkdir database
+virtualenv venv
+. venv/bin/activate
+pip install -r requirements.txt
 export EDITOR=nano
 (crontab -l -u root 2>/dev/null; echo '* * * * * cd /root/sentinel-rxc && ./venv/bin/python bin/sentinel.py >/dev/null 2>&1') | sudo crontab -u root -
 ./venv/bin/py.test ./test
