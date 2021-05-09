@@ -8,11 +8,9 @@ if [ "$(whoami)" != "root" ]; then
   exit -1
 fi
 
-if [[ $(lsb_release -rs) == "18.04" ]];
+if [[ $(lsb_release -rs) != "18.04" ]];
 
-       echo "Compatible version"
-       #Copy your files here
-else
+      
        echo "Non-compatible version"
 	   exit -1
 fi
