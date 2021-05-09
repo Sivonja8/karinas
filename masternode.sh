@@ -8,7 +8,7 @@ if [ "$(whoami)" != "root" ]; then
   exit -1
 fi
 
-if [[ $(lsb_release -rs) != "18.04" ]];
+if [[ $(lsb_release -rs) != "18.04" ]]; then
 
       
        echo "Non-compatible version"
