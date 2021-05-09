@@ -67,24 +67,26 @@ libdb4.8++-dev
 
 cd /root
 
+# Edit/Create config file for rxc
 echo && echo "Creating your data folder and files..."
 sleep 3
 sudo mkdir /root/.ruxcrypto
 
-
-sudo touch /root/.ruxcrypto/ruxcrypto.conf
+rpcuser=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
+rpcpassword=`cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1`
+sudo touch /root/.ruxcrypto/ruxcrypto.conf #config
 echo '
-rpcuser=rpc_ruxcrypto
-rpcpassword=kuw05sqio7bcm8z96o7redv17xws1lw6xpd1qf33
+rpcuser='$rpcuser'
+rpcpassword='$rpcpassword'
 rpcallowip=127.0.0.1
-
 listen=1
 server=1
+rpcport=23506
 daemon=1
-maxconnections=64
-
-masternode=1
+logtimestamps=1
+maxconnections=256
 externalip='$ip'
+masternode=1
 masternodeprivkey='$key'
 ' | sudo -E tee /root/.ruxcrypto/ruxcrypto.conf
 
