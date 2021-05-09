@@ -70,7 +70,7 @@ cd /root
 adduser rxc
 adduser rxc sudo
 su rxc
-cd
+cd ..
 
 mkdir .ruxcrypto
 sudo touch /root/.ruxcrypto/ruxcrypto.conf
