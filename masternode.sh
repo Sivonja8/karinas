@@ -61,7 +61,7 @@ software-properties-common
 
 echo | sudo add-apt-repository ppa:bitcoin/bitcoin
 sudo apt-get update
-sudo apt-get -y install 
+sudo apt-get -y install \
 libdb4.8-dev \
 libdb4.8++-dev
 
@@ -69,8 +69,8 @@ cd /root
 
 adduser rxc
 adduser rxc sudo
-sudo su rxc
-sudo cd
+su rxc
+cd
 
 mkdir .ruxcrypto
 sudo touch /root/.ruxcrypto/ruxcrypto.conf
