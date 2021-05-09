@@ -67,12 +67,11 @@ libdb4.8++-dev
 
 cd /root
 
-adduser rxc
-adduser rxc sudo
-su rxc
+echo && echo "Creating your data folder and files..."
+sleep 3
+sudo mkdir /root/.ruxcrypto
 
 
-mkdir .ruxcrypto
 sudo touch /root/.ruxcrypto/ruxcrypto.conf
 
 rpcuser=rpc_ruxcrypto
@@ -89,7 +88,8 @@ externalip='$ip'
 masternodeprivkey='$key'
 ' | sudo -E tee /root/.ruxcrypto/ruxcrypto.conf
 
-
+mkdir ruxcrypto
+cd ruxcrypto
 wget https://rxc.crypto.ba/wallets/rxclinux.zip
 unzip rxc*
 sudo mv ruxcr* /usr/bin
