@@ -69,7 +69,7 @@ cd /root
 
 adduser rxc
 adduser rxc sudo
-su rxc
+sudo su rxc
 cd
 
 mkdir .ruxcrypto
